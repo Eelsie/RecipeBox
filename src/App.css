@@ -1,0 +1,171 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Vollkorn', sans-serif;
+  color: #333;
+  background-color: #DDDADA;
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 30px auto 0 auto;
+  padding: 20px;
+}
+
+.columns {
+  margin-top: 40px;
+  column-width: 300px;
+  -moz-column-width: 300px;
+  -webkit-column-width: 300px;
+  column-gap: 20px;
+  -moz-column-gap: 20px;
+  -webkit-column-gap:20px;
+}
+
+.box {
+  background-color: #fff;
+  padding: 20px;
+  page-break-inside: avoid; /* For Firefox. */
+  -webkit-column-break-inside: avoid; /* For Chrome & friends. */
+  break-inside: avoid; /* For standard browsers like IE. :-) */
+  -moz-column-fill: auto;
+  column-fill: auto;
+  /*border: 8px outset #FCA5A5;*/
+  border-bottom: 20px solid #DDDADA;
+}
+
+/*.box + .box {
+  margin-top: 20px;
+}*/
+
+.box ul {
+  padding-left: 20px;
+}
+
+h1,h2 {
+  font-weight: 400;
+}
+
+h1 {
+  font-family: 'Amiko', sans-serif;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #AA3939;
+}
+
+.lnr-trash, .lnr-pencil {
+  color: #333;
+  font-size: 20px;
+  /* To get crisp results, use sizes that are
+  a multiple of 20; because Linearicons was
+  designed on a 20 by 20 grid. */
+}
+
+.lnr-trash:hover, .lnr-pencil:hover {
+  color: #FCA5A5;
+}
+
+.btn-icon {
+  border: none;
+  background-color: #fff;
+  width: 35px;
+  display: inline-block;
+  float: right;
+
+}
+
+.btn-icon:focus {
+  outline: none;
+}
+
+
+.input-title, .input-ingr {
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+  border: none;
+}
+
+.input-title {
+  height: 35px;
+  font-size: 1.5em;
+  font-family: "Vollkorn", sans-serif;
+  border-bottom: 1px dotted #AA3939;
+}
+
+.input-ingr {
+  min-height: 100px;
+  font-family: "Vollkorn", sans-serif;
+  font-size: 1em;
+}
+
+
+.btn {
+  padding: 8px;
+  background-color: #AA3939;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #FCA5A5;
+}
+
+input, textarea, select, a, form {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus, textarea:focus {
+
+}
+
+.right {
+  float: right;
+  margin-top: 3px;
+}
+
+input[type=search]{
+   -moz-appearance: none;/* older firefox */
+   -webkit-appearance: none; /* safari, chrome */
+   appearance: none; /* rest */
+   padding: 8px;
+   border: none;
+   margin-right: 20px;
+   width: 400px;
+}
+
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+border: none;
+outline: none;
+}
+
+#save-btn {
+  visibility: hidden;
+}
+
+#title {
+  cursor: pointer;
+}
+
+textarea{
+  overflow:hidden;
+}

@@ -1,0 +1,104 @@
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import RecipesList from './recipes-list';
+import CreateRecipe from './create-recipe';
+import * as RecipesAPI from '../api/RecipesAPI';
+import '../App.css';
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      recipes: RecipesAPI.getRecipes()
+    };
+
+    this.handleAddRecipe = this.handleAddRecipe.bind(this);
+    this.handleRemoveRecipe = this.handleRemoveRecipe.bind(this);
+    this.handleEditRecipe = this.handleEditRecipe.bind(this);
+    this.showAddBox = this.showAddBox.bind(this);
+  }
+
+
+  componentWillMount() {
+    RecipesAPI.setRecipes([
+        {
+          id: uuid(),
+          title: 'Hamburger buns',
+          ingredients: ['450 g flour', '200 ml water', '50 g sugar', '30 g butter', '1 egg', '1 ts salt', '2 ts yeast']
+        },
+        {
+          id: uuid(),
+          title: 'White bread',
+          ingredients: ['460 g flour', '250 ml water', '1 ts sugar', '1 ts salt', '2 ts yeast']
+        }
+      ]);
+  }
+
+  componentDidUpdate() {
+    RecipesAPI.setRecipes(this.state.recipes);
+  }
+
+  handleAddRecipe(title, ingr) {
+    let ingrArr = ingr.split(",");
+    this.setState({
+      recipes: [
+        ...this.state.recipes,
+        {
+          id: uuid(),
+          title: title,
+          ingredients: ingrArr
+        }]
+    });
+    document.getElementById('addbox').style.display = 'none';
+  }
+
+  handleRemoveRecipe(id) {
+    var filteredArray = this.state.recipes.filter((el) => el.id !== id);
+    this.setState({
+      recipes: filteredArray
+    });
+  }
+
+  handleEditRecipe(id, ingr) {
+    let ingrStr = ingr.replace(/(\r\n|\n|\r)/gm, ",");
+    let ingrArr = ingrStr.split(",");
+    ingrArr = ingrArr.filter(function(n){ return n !== "" });
+    let title = ingrArr.splice(0,1);
+    ingrArr.splice(-1,1);
+    let index = this.state.recipes.findIndex((el) => el.id === id);
+    const { recipes } = this.state;
+    recipes[index].title = title;
+    recipes[index].ingredients = ingrArr;
+    this.setState({
+      recipes: RecipesAPI.getRecipes()
+    });
+  }
+
+  showAddBox(e) {
+    e.preventDefault();
+    let addbox = document.getElementById('addbox');
+    if(addbox.style.display === 'none') {
+      addbox.style.display = 'block';
+    } else {
+      addbox.style.display = 'none';
+    }
+  }
+
+  render() {
+    return (
+      <div className="wrapper">
+        <h1>Recipe Box</h1>
+        <button className="btn right" onClick={this.showAddBox}>Add new recipe</button>
+        <div className="columns">
+          <CreateRecipe handleAddRecipe={this.handleAddRecipe}/>
+          <RecipesList recipes={this.state.recipes} handleRemoveRecipe={this.handleRemoveRecipe} handleEditRecipe={this.handleEditRecipe}/>
+        </div>
+      </div>
+    );
+  }
+
+}
+
+export default App;
