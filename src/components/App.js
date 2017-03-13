@@ -95,6 +95,9 @@ class App extends Component {
           <CreateRecipe handleAddRecipe={this.handleAddRecipe}/>
           <RecipesList recipes={this.state.recipes} handleRemoveRecipe={this.handleRemoveRecipe} handleEditRecipe={this.handleEditRecipe}/>
         </div>
+        <div className="credits" >
+          <a href="https://github.com/Eelsie/RecipeBox" target="_blank">Code on Github</a>
+        </div>
       </div>
     );
   }
