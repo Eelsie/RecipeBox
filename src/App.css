@@ -29,6 +29,14 @@ body {
   -webkit-column-gap:20px;
 }
 
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
 .box {
   background-color: #fff;
   padding: 20px;
@@ -57,7 +65,7 @@ h1 {
   font-family: 'Amiko', sans-serif;
   text-transform: uppercase;
   display: inline-block;
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 
 h2 {
@@ -148,8 +156,11 @@ input[type=search]{
    appearance: none; /* rest */
    padding: 8px;
    border: none;
-   margin-right: 20px;
-   width: 400px;
+   width: 50%;
+}
+
+.big {
+  margin-left: 20px;
 }
 
 [contenteditable="true"]:active,
@@ -173,4 +184,10 @@ textarea{
 .credits {
   position: absolute;
   bottom: 30px;
+}
+
+@media screen and (max-width: 710px) {
+  input[type=search]{
+     width: 100%;
+  }
 }

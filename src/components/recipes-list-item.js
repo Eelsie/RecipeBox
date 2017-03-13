@@ -26,7 +26,7 @@ const RecipesListItem = (props) => {
 
     const openRecipe = (e) => {
       e.preventDefault();
-      console.log(e.target.parentElement.contentEditable == 'true');
+      console.log(e.target.parentElement.contentEditable === 'true');
       if(e.target.nextElementSibling.style.display === 'none') {
         e.target.nextElementSibling.style.display = 'block';
         e.target.nextElementSibling.nextElementSibling.style.display = 'block';

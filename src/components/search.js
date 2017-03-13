@@ -1,9 +1,15 @@
 import React from 'react';
-let searchInput;
-const Search = () => {
+
+
+
+
+const Search = (props) => {
+
+  let searchInput;
 
   const handleSearch = () => {
-    return "bla";
+    let searchText = searchInput.value;
+    props.onSearch(searchText);
   }
 
   return (
