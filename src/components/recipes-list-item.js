@@ -26,10 +26,11 @@ const RecipesListItem = (props) => {
 
     const openRecipe = (e) => {
       e.preventDefault();
+      console.log(e.target.parentElement.contentEditable == 'true');
       if(e.target.nextElementSibling.style.display === 'none') {
         e.target.nextElementSibling.style.display = 'block';
         e.target.nextElementSibling.nextElementSibling.style.display = 'block';
-      } else if (e.target.parentElement.contentEditable === false){
+      } else if (e.target.parentElement.contentEditable === 'false'){
         e.target.nextElementSibling.style.display = 'none';
         e.target.nextElementSibling.nextElementSibling.style.display = 'none';
       }
@@ -38,7 +39,7 @@ const RecipesListItem = (props) => {
 
     return (
       <div className="box">
-        <form id="editable" onSubmit={editRecipe}>
+        <form id="editable" contentEditable="false" onSubmit={editRecipe}>
           <h2 id="title" onClick={openRecipe}>{props.title}</h2>
           <ul id="ingr" style={{display: 'none'}}>
           {props.ingredients.map(function(ingredient, index) { return <li key={index}>{ingredient}</li>})}
