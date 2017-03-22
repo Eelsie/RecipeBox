@@ -13,7 +13,7 @@ const Search = (props) => {
   }
 
   return (
-    <input className="right" type="search" ref={ el => searchInput = el } placeholder="Search recipies" onChange={handleSearch}/>
+    <input className="right" type="search" ref={ el => searchInput = el } placeholder="Search recipes" onChange={handleSearch}/>
   );
 }
 
