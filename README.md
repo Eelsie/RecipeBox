@@ -1,4 +1,4 @@
-##Recipe Box 
+## Recipe Box 
 
 This project is part of [Freecodecamp Data visualization certification](https://www.freecodecamp.com/challenges/build-a-recipe-box).  
 
